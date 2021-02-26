@@ -921,8 +921,8 @@ if __name__ == '__main__':
             identifier += '/' + self.type
             if getattr(self, 'type_instance', None):
                 identifier += '-' + self.type_instance
-            print 'PUTVAL', identifier, \
-                ':'.join(map(str, [int(self.time)] + self.values))
+            print('PUTVAL', identifier, \
+                ':'.join(map(str, [int(self.time)] + self.values)))
 
     class ExecCollectd:
         def Values(self):
@@ -932,19 +932,19 @@ if __name__ == '__main__':
             pass
 
         def error(self, msg):
-            print 'ERROR: ', msg
+            print('ERROR: ', msg)
 
         def warning(self, msg):
-            print 'WARNING:', msg
+            print('WARNING:', msg)
 
         def notice(self, msg):
-            print 'NOTICE: ', msg
+            print('NOTICE: ', msg)
 
         def info(self, msg):
-            print 'INFO:', msg
+            print('INFO:', msg)
 
         def debug(self, msg):
-            print 'DEBUG: ', msg
+            print('DEBUG: ', msg)
 
     collectd = ExecCollectd()
 
