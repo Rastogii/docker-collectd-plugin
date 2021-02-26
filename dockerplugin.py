@@ -686,7 +686,7 @@ class DockerPlugin:
     def read_callback(self):
         try:
             version = self.client.version()['ApiVersion']
-        except IOError, e:
+        except IOError as e:
             # Log a warning if connection is not established
             log.exception(('Unable to access Docker daemon at {url}. '
                            'This may indicate SELinux problems. : {error}')
@@ -747,7 +747,7 @@ class DockerPlugin:
                         continue
                     try:
                         method(container, cstats.dimensions, stats, read_at)
-                    except Exception, e:
+                    except Exception as e:
                         log.exception(('Unable to retrieve {method} stats '
                                        'for container {container}: {msg}')
                                       .format(
