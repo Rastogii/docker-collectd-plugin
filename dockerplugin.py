@@ -646,7 +646,7 @@ class DockerPlugin:
 
         try:
             version = self.client.version()['ApiVersion']
-        except IOError, e:
+        except IOError as e:
             # Log a warning if connection is not established
             collectd.warning((
                     'Unable to access Docker daemon at {url} in \
@@ -764,12 +764,12 @@ class DockerPlugin:
                         containers_state.append({
                                     'container': container,
                                     'container_inspect': container_inspect})
-                    except Exception, e:
+                    except Exception as e:
                         log.exception(('Unable to retrieve cpu share and quota'
                                        ' stats for {container}: {msg}').format(
                                            container=_c(container), msg=e))
 
-            except Exception, e:
+            except Exception as e:
                 log.exception(('Unable to retrieve stats for container '
                                '{container}: {msg}')
                               .format(container=_c(container), msg=e))
