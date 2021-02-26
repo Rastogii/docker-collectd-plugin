@@ -647,16 +647,13 @@ class DockerPlugin:
         try:
             version = self.client.version()['ApiVersion']
         except IOError as e:
-            # Log a warning if connection is not established
             collectd.warning((
                     'Unable to access Docker daemon at {url} in \
                     init_callback. Will try in read_callback.'
                     'This may indicate SELinux problems. : {error}')
                     .format(url=self.docker_url, error=e))
 
-            collectd.register_read(
-                    self.read_callback,
-                    interval=COLLECTION_INTERVAL)
+            collectd.register_read(self.read_callback, interval=COLLECTION_INTERVAL)
 
             return True
 
