@@ -441,7 +441,7 @@ class ContainerStats(threading.Thread):
 
                 # Reset failure count on successful read from the stats API.
                 failures = 0
-            except Exception, e:
+            except Exception as e:
                 # If we encounter a failure, wait a second before retrying and
                 # mark the failures. After three consecutive failures, we'll
                 # stop the thread. If the container is still there, we'll spin
